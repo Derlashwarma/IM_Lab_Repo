@@ -1,3 +1,7 @@
+<?php 
+session_start();
+$username = $_GET["username"];
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,11 +10,43 @@
         <link rel="stylesheet" href="css/css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" href="css/main_page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
         <title>About Us</title>
     </head>
 
 
     <body>
+        <div class="nav shadow floating-nav rounded-4 navbar navbar-expand-lg navbar-light bg-light mb-3">
+            <div class="container element-container">
+                <div class="name-container p-2 text-center">
+                    <h1>
+                        <?php
+                            echo($username);
+                        ?>
+                    </h1>
+                </div>
+                
+            </div>
+            <div class="utility-buttons">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="includes/logout.php" class="link-underline link-underline-opacity-0" id="logout-btn">logout</a></li>
+                    </ul>
+                </div>
+        </div>
+    <div class="main-page-container container">
+        <div class="news-feed-container row">
+            <div class="navigation bg-body shadow mb-3 rounded-4">
+                <div class="nav-buttons">
+                    <ul class="list-inline pt-3 page-list">
+                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
+                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
+                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
+                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
 
         <div class = "container bg-body rounded-4 shadow p-4 mb-3" >
             <h1>
@@ -110,8 +146,8 @@
         </div>
 
 
-
-
+        </div>
+    </div>
     </body>
 
     <footer>

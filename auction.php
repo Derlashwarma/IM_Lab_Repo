@@ -48,11 +48,13 @@
     </div>
     <div class="main-page-container container">
         <div class="news-feed-container row">
-            <div class="navigation bg-body shadow mb-3 rounded-3">
-                <div class="nav-buttons ">
+            <div class="navigation bg-body shadow mb-3 rounded-4">
+                <div class="nav-buttons">
                     <ul class="list-inline pt-3 page-list">
                         <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
                         <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
+                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
+                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
