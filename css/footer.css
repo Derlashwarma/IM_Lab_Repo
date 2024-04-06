@@ -1,0 +1,13 @@
+.footer{
+    width: 100%;
+    display: flex;
+    align-content: baseline;
+    justify-content: center;
+    background-color: rgb(247, 247, 247);
+    height: 10%;
+    box-shadow:  0  40px  10px rgb(247, 247, 247);
+}
+.footer-container{
+    width: 70%;
+    height: 100%;
+}

@@ -1,0 +1,83 @@
+
+.main-container{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width: 1040px){
+    .main-container{
+        flex-direction: column;
+    }
+    .login-container{
+        width: 100%;
+    }
+    .input{
+        width: 100%;
+    }
+}
+.register-container{
+    margin-top: 8vh;
+    z-index: 10;
+    position: absolute;
+    height: fit-content;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 2, 1, 0.1);
+    backdrop-filter: blur(2px);
+    transition:  0.9s ease-in;
+}
+.registration-form{
+    width: 60%;
+    min-width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+#first_name{
+    margin-top: 0;
+}
+.close-btn-container{
+    width: 100%;
+    height: fit-content;
+    text-align: right;
+}
+.register-input-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.password-container{
+    display: flex;
+}
+#show_regis_pass{
+    border: none;
+    background-color: transparent;
+    vertical-align: middle;
+    height: fit-content;
+}
+:root{
+    --accent_color: #fa3c27;
+    --accent_highlight: #da220d;
+    --main_color: #CDD7D6;
+    --miscellaneous_buttons: #134289;
+}
+.sbm{
+    background-color: var(--accent_color);
+    border: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.sbm:hover{
+    background-color: var(--accent_highlight);
+    color: white;
+}

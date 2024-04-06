@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    padding: clamp(5px,1vw,20px);
+    background-color: rgb(235, 239, 243);
+}
+
+.main-page-container{
+    width: clamp(400px, 60%, 700px);
+}
+
+#message{
+    width: 100%;
+    box-sizing: border-box;
+    padding: clamp(2px,1vw,10px);
+}
+
+.image-div img{
+    width: 100%;
+}
+
+.button-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.floating-nav{
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    width: min(400px,18vw);
+    display: flex;
+    flex-direction: column;
+}
+.element-container{
+    display: flex;
+    flex-direction: column;
+}
+.nav-btn{
+    display: flex;
+    flex-direction: column;
+}
+@media(max-width: 1130px){
+    .floating-nav{
+        position:relative; margin: 0 auto;
+        left: auto;
+        right: auto; 
+        width: max(400px,58vw);
+        flex-direction: row;
+    }
+    .nav-btn{
+        flex-direction: row;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+    .nav-btn a{
+        background-color: rgb(250, 207, 207);
+        width: 120%;
+    }
+    .utility-buttons{
+        margin: clamp(20px, 2vw,400px);
+        padding-top: 10px;
+        height: 100%;
+        width: 100%;
+        text-align: right;
+    }
+}
+.delete-btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-post{
+    width: 100%;
+    display: none;
+}
+
+.confirm-message{
+    text-align: center;
+}
+.btn-no{
+    width: 30%;
+}
+.btn-yes{
+    width: 30%;
+}
+.information-div, .like-count{
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+}
+.page-list{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.page-list li  {
+    width: 50%;
+    text-align: center;
+}
+/* .name-container{
+    border: 1px solid red;
+} */
