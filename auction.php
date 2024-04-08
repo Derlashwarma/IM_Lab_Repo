@@ -12,6 +12,7 @@
     if($result){
         $isAdmin = $result["is_admin"];
     }
+    $is_auction=$_GET['is_auction'];
 ?>
 
 <!DOCTYPE html>
@@ -48,12 +49,34 @@
     </div>
     <div class="main-page-container container">
         <div class="news-feed-container row">
-            <div class="navigation bg-body shadow mb-3 rounded-3">
-                <div class="nav-buttons ">
-                    <ul class="list-inline pt-3 page-list">
+        <div class="navigation bg-body shadow mb-3 rounded-4">
+                <div class="nav-buttons h-100">
+                    <ul class="list-inline pt-3 page-list h-100">
                         <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
-                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
+                        <li class="list-inline-item h-80 rounded-4 shadow"><a class="link-underline link-underline-opacity-0 text-dark" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
+                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
+                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
                     </ul>
+                </div>
+            </div>
+            <div class="upload-container mb-3 shadow bg-body  p-3 rounded-4">
+            <div class="upload-form-container">
+                <div class="row p-2">
+                    <label for="message">Upload</label>
+                    <form method="post" id="uploadForm" enctype="multipart/form-data">
+                        <div class="row message-div">
+                            <div class="col-3 form-group">
+                                <input class="form-control form-control-lg image-input" accept=".jpg, .jpeg, .png" type="file" id="image" name="image" required>
+                            </div>
+                            <div class="col">
+                                <textarea placeholder="Car Information" name="message" id="message" class="form-control rounded-3" cols="30" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="button-div mt-3">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                    </div>
                 </div>
             </div>
             <?php
@@ -68,7 +91,7 @@
         var username = "<?php echo htmlspecialchars(urlencode($username)); ?>";
         var acctid = "<?php echo htmlspecialchars(urlencode($acctid)); ?>";
         var form = document.getElementById("uploadForm");
-        form.action = "includes/upload.php?username=" + username + "&acctid=" + acctid;
+        form.action = "includes/upload.php?username=" + username + "&acctid=" + acctid +"&is_auction=1";
         });
 </script>
 <script

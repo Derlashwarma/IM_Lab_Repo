@@ -20,7 +20,6 @@
                 pass.type = "password";
             }
         });
-
         var show_regis = document.getElementById("show_regis_pass");
         show_regis.addEventListener('click',function(event){
             event.preventDefault();

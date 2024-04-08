@@ -3,10 +3,11 @@
     $post_id = $_GET['post_id'];
     $acctid = $_GET['acctid'];
     $username = $_GET['username'];
+    $is_auction = $_GET['is_auction'];
 
     $check_like_exist_query = "SELECT l.isliked, l.acctid, l.post_id, p.author_id, p.post_id 
                                 FROM tbllike AS l
-                                INNER JOIN post AS p
+                                INNER JOIN tblpost AS p
                                 ON l.post_id = p.post_id
                                 WHERE l.post_id = ? 
                                 AND l.acctid = ?";
@@ -24,7 +25,7 @@
             $remove_query = $conn->prepare($remove_like_query);
             $remove_query->bind_param('ii',$post_id,$acctid);
             $remove_query->execute();
-            $decrement_query = "UPDATE post 
+            $decrement_query = "UPDATE tblpost 
                                     SET post_likes = post_likes - 1
                                     WHERE post_id = ?";
             $run_decrement = $conn->prepare($decrement_query);
@@ -60,5 +61,10 @@
         $run_increment->bind_param('i',$post_id);
         $run_increment->execute();
     }
-    header("Location: ../main_page.php?username=$username&acctid=$acctid");
+    if($is_auction == 1){
+        header("Location: ../auction.php?username=$username&acctid=$acctid&is_auction=1");
+    }
+    else{
+        header("Location: ../main_page.php?username=$username&acctid=$acctid&is_auction=0");
+    }
 ?>

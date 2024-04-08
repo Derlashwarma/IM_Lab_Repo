@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if($result_check_email->num_rows > 0){
             $_SESSION["error"] = "User Email Already Used";
             $stmt_check_email->close();
-            header("Location: ../index.php?registration=failed");
+            header("Location: index.php?registration=failed");
             return;
         }
         else{
@@ -45,10 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             //execute both
             if($stmt_insert_query_profile->execute() && $stmt_insert_query_account->execute()){
                 $_SESSION["success"] = "Registration Successful, you may now Log in your account";
-                header("Location: ../index.php?registration=success");
-            }
-            else{
-                echo("<script>alert('REGISTRATION FAILED')</script>");
+                header("Location: index.php?registration=success");
             }
         }
     }
