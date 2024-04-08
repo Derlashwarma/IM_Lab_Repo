@@ -1,34 +1,36 @@
-    addEventListener('DOMContentLoaded',()=>{
-        var regis_btn = document.getElementById("register");
-        regis_btn.addEventListener('click',function(){
-            document.getElementById("register_page").style.display = "flex";
+    $(document).ready(function(){
+
+        var regis_btn = $("#register");
+        regis_btn.click(function(){
+            $("register_page").css("display","flex");
         })
-        var close_regis = document.getElementById("close_regis");
-        close_regis.addEventListener('click',function(event){
+        var close_regis = $("#close_regis");
+        close_regis.click(function(event){
             event.preventDefault(); 
-            document.getElementById("register_page").style.display = "none";
+            $("#register_page").css("display","none");
         })
 
-        var show = document.getElementById("show_pass");
-        show.addEventListener('click',function(event){
+        var show = $("#show_pass");
+        show.click(function(event){
             event.preventDefault();
-            var pass = document.getElementById('password');
-            if(pass.type == "password"){
-                pass.type = "text";
+            var pass = $("#password");
+            if(pass.attr("type") == "password"){
+                pass.attr("type", "text");
             }
             else{
-                pass.type = "password";
+                pass.attr("type", "password");
             }
         });
-        var show_regis = document.getElementById("show_regis_pass");
-        show_regis.addEventListener('click',function(event){
+
+        var show_regis = $("#show_regis_pass");
+        show_regis.click(function(event){
             event.preventDefault();
-           var pass = document.getElementById("regis_pass");
-           if(pass.type == "password"){
-            pass.type = "text";
+           var pass = $("#regis_pass");
+           if(pass.attr("type") == "password"){
+            pass.attr("type","text");
            }
            else{
-            pass.type = "password";
+            pass.attr("type","password");
            }
         });
     });

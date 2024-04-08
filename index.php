@@ -20,13 +20,15 @@
     <link rel="stylesheet" href="css/about_us.css">
     <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
     <script src="js/validate.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>WheelDeal Login</title>
 </head>
 <body>
     <div class="main-container container ">
         <div class="login-container">
             <div class="input shadow-lg p-3 mb-5 bg-body rounded">    
-                <form method="post">
+                <form method="post" id="login_form">
                     <div class="mt-2">
                         <div class="form-floating username">
                             <input type="text" class="form-control" name="username" id="username" placeholder="Username" >

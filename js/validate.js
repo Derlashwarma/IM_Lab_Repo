@@ -1,81 +1,77 @@
-addEventListener('DOMContentLoaded',function(){
-    
-    var register_btn = document.getElementById("submit_registration");
+$(document).ready(function() {
+    var inputs = [
+        $("#regis_pass"),
+        $("#regis_pass_conf"),
+        $("#regis_first_name"),
+        $("#regis_last_name"),
+        $(".form-select[name='regis_gender']"),
+        $("#regis_email"),
+        $("#regis_user_name")
+    ];
 
-    register_btn.addEventListener('click',function(event){
+    $("#submit_registration").click(function(event) {
         var valid = true;
-        var password2 = document.getElementById("regis_pass");
-        var password = document.getElementById("regis_pass_conf");
 
-        var firstname = document.getElementById("regis_first_name");
-        var lastname = document.getElementById("regis_last_name");
-        var selectElement = document.querySelector('.form-select[name="regis_gender"]');
-        var email = document.getElementById("regis_email");
-        var username = document.getElementById("regis_user_name");
-
-        var inputs = [password2,password,firstname,lastname,selectElement,
-        email,username];
-
-        inputs.forEach(function(input){
-            if(input.value === ""){
-                input.style.borderColor = "red";
+        inputs.forEach(function(input) {
+            if (input.val() === "") {
+                input.css("borderColor", "red");
                 valid = false;
-            }
-            else{
-                input.style.borderColor = "";
+            } else {
+                input.css("borderColor", "");
             }
         });
 
-        if(valid == false){
-            document.getElementById("error_message").textContent = "Please enter valid input/s";
-            event.preventDefault();
+        var password = inputs[0].val();
+        var password2 = inputs[1].val();
+        if (password !== password2) {
+            $("#regis_pass, #regis_pass_conf").css("borderColor", "red");
+            $("#error_message").text("Password does not match");
+            valid = false;
         }
 
-        if(password.value !== password2.value){
-            password.style.borderColor = "red";
-            password2.style.borderColor = "red";
-            document.getElementById("error_message").textContent = "Pasword does not match";
+        if (!valid) {
+            $("#error_message").text("Please enter valid input/s");
             event.preventDefault();
-        }
-    })
-    
-    document.getElementById("login").addEventListener('click',function(event){
-        var username = document.getElementById("username");
-        var password = document.getElementById("password");
-
-        if(username.value === ""){
-            username.style.borderColor = "red";
-            event.preventDefault();
-        }
-        if(password.value === ""){
-            password.style.borderColor = "red";
-            event.preventDefault();
-        }
-        else{
-            password.style.borderColor = "green";
-            username.style.borderColor = "green";
         }
     });
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.has("registration") && urlParams.get("registration") === 'failed'){
-        document.getElementById("register_page").style.display = "flex";
-        document.getElementById("error_message").textContent = "Email or username already taken";
 
-        inputs.forEach(function(input){
-            input.textContent = input.value;
+    $("#login").click(function(event) {
+        var username = $("#username");
+        var password = $("#password");
+
+        if (username.val() === "") {
+            username.css("borderColor", "red");
+            event.preventDefault();
+        }
+
+        if (password.val() === "") {
+            password.css("borderColor", "red");
+            event.preventDefault();
+        } else {
+            password.css("borderColor", "green");
+            username.css("borderColor", "green");
+        }
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("registration") && urlParams.get("registration") === 'failed') {
+        $("#register_page").css("display", "flex");
+        $("#error_message").text("Email or username already taken");
+        inputs.forEach(function(input) {
+            input.val(input.val());
         });
     }
-    if(urlParams.has("registration") && urlParams.get("registration") === 'success'){
-        document.getElementById("register_page").style.display = "flex";
-        document.getElementById("error_message").textContent = "Registration successful";
-        document.getElementById("error_message").classList.remove('text-danger');
-        document.getElementById("error_message").style.color = "green";
+
+    if (urlParams.has("registration") && urlParams.get("registration") === 'success') {
+        $("#register_page").css("display", "flex");
+        $("#error_message").text("Registration successful");
+        $("#error_message").removeClass("text-danger");
+        $("#error_message").css("color", "green");
     }
 
-    if(urlParams.has("status") && urlParams.get("status") === 'failed'){
-        document.getElementById("error_login").textContent = "Wrong username or password";
+    if (urlParams.has("status") && urlParams.get("status") === 'failed') {
+        var user = urlParams.get("username");
+        $("#username").val(user);
+        $("#error_login").text("Wrong username or password");
     }
-
-
 });

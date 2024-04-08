@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location:  main_page.php?username=".urlencode($_SESSION["username"])."&acctid=".urlencode($_SESSION["acctid"])."&is_auction=0");
             exit();
         } else {
-            header("Location: index.php?status=failed");
+            header("Location: index.php?status=failed&?username=".urlencode($username));
         }
     }
 }
