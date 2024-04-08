@@ -76,12 +76,6 @@ addEventListener('DOMContentLoaded',function(){
     if(urlParams.has("status") && urlParams.get("status") === 'failed'){
         document.getElementById("error_login").textContent = "Wrong username or password";
     }
-});
 
-// document.addEventListener('DOMContentLoaded',function(){
-//     const urlParams = new URLSearchParams(window.location.search);
-//     if(urlParams.has("registration") && urlParams.get("registration") === 'failed'){
-//         document.getElementById("register_page").style.display = "flex";
-//         document.getElementById("error_message").textContent = "Email or username already taken";
-//     }
-// });
+
+});

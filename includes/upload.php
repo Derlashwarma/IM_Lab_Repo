@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // File Upload to Local Storage
     $post_info = $_POST['message'];
-    $is_auction = isset($_POST['is_auction']) ? 1 : 0;
 
     if (isset($_FILES["image"]["name"])) {
         $image_name = $_FILES["image"]["name"];
@@ -36,12 +35,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $address = "../images/" . $image_name;
         move_uploaded_file($image_tmp, $address);
 
+        $is_auction = $_GET['is_auction'];
+
         $store_query = "INSERT INTO tblpost(author_id, post_image, post_information, is_auction)
                         VALUES(?,?,?,?)";
         $store_stment = $conn->prepare($store_query);
         $store_stment->bind_param("isss", $author_id, $address, $post_info, $is_auction);
         if ($store_stment->execute()) {
+            if($is_auction == 1){
+                header('Location: ../auction.php?username='.urlencode($username).'&acctid='.urlencode($acctid).'&is_auction=1');
+            }
+            else{
             header('Location: ../main_page.php?username='.urlencode($username).'&acctid='.urlencode($acctid).'&is_auction=0');
+            }
         } else {
             echo("<script>alert('UPLOAD FAILED :((')</script>");
         }

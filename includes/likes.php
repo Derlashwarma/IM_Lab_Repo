@@ -3,6 +3,7 @@
     $post_id = $_GET['post_id'];
     $acctid = $_GET['acctid'];
     $username = $_GET['username'];
+    $is_auction = $_GET['is_auction'];
 
     $check_like_exist_query = "SELECT l.isliked, l.acctid, l.post_id, p.author_id, p.post_id 
                                 FROM tbllike AS l
@@ -60,5 +61,10 @@
         $run_increment->bind_param('i',$post_id);
         $run_increment->execute();
     }
-    header("Location: ../main_page.php?username=$username&acctid=$acctid&is_auction=0");
+    if($is_auction == 1){
+        header("Location: ../auction.php?username=$username&acctid=$acctid&is_auction=1");
+    }
+    else{
+        header("Location: ../main_page.php?username=$username&acctid=$acctid&is_auction=0");
+    }
 ?>

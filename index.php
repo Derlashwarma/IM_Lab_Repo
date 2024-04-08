@@ -7,6 +7,7 @@
         include 'includes/register.php';
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@
     <title>WheelDeal Login</title>
 </head>
 <body>
-    <div class="main-container container">
+    <div class="main-container container ">
         <div class="login-container">
             <div class="input shadow-lg p-3 mb-5 bg-body rounded">    
                 <form method="post">
@@ -53,11 +54,11 @@
                 </form>
             </div>
         </div>
-        <div class="register-container shadow p-3 rounded" id="register_page">
+        <div class="register-container shadow p-3 rounded align-self-center" id="register_page">
             <div class="registration-form mt-5">
                 <form method="POST" onsubmit="return validateRegistration(event)">
                     <div class="register-input-container input shadow p-3 mb-5 bg-body rounded">
-                        <div class="mb-3 d-grid gap-2">
+                        <div class=" mb-3 d-grid gap-2">
                             <div class="close-btn-container"><button id="close_regis" class="btn-close"></button></div>
                             <div class="form-floating">
                                 <input type="text" class="form-control" name="regis_firstname" id="regis_first_name" placeholder="First name" >
@@ -119,14 +120,6 @@
                 </form>
             </div>
         </div>
-        <!--
-        <div class="about-us-container p-2 container shadow-lg p-3 mb-5 bg-white rounded">
-            <div class="about-us-btn-container">
-                <div class="row p-2"><button class="btn btn-danger accent fs-3">ABOUT US</button></div>
-                <div class="row p-2"><button class="btn btn-danger accent fs-3">CONTACT US</button></div>
-            </div>
-        </div>
-        -->
     </div>
     <script src="js/script.js"></script>
     <footer class="footer mt-5">

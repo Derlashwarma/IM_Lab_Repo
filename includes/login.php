@@ -1,5 +1,4 @@
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -27,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location:  main_page.php?username=".urlencode($_SESSION["username"])."&acctid=".urlencode($_SESSION["acctid"])."&is_auction=0");
             exit();
         } else {
-            $_SESSION["error"] = "Incorrect password.";
             header("Location: index.php?status=failed");
         }
     }
