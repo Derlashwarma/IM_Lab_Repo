@@ -58,7 +58,8 @@
 .password-container{
     display: flex;
 }
-#show_regis_pass{
+#show_regis_pass, 
+#show_regis_pass_2{
     border: none;
     background-color: transparent;
     vertical-align: middle;
@@ -80,4 +81,7 @@
 .sbm:hover{
     background-color: var(--accent_highlight);
     color: white;
+}
+.btn_2{
+    background-color: red;
 }

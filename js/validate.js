@@ -26,15 +26,26 @@ $(document).ready(function() {
         if (password !== password2) {
             $("#regis_pass, #regis_pass_conf").css("borderColor", "red");
             $("#error_message").text("Password does not match");
-            valid = false;
-        }
-
-        if (!valid) {
-            $("#error_message").text("Please enter valid input/s");
             event.preventDefault();
         }
     });
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("registration") && urlParams.get("registration") === 'failed') {
+        $("#register_page").css("display", "flex");
+        $("#error_message").text("Email or username already taken");
+        inputs.forEach(function(input) {
+            input.val(input.val());
+        });
+    }
+    if (urlParams.has("registration") && urlParams.get("registration") === 'success') {
+        $("#register_page").css("display", "flex");
+        $("#error_message").text("Registration successful");
+        $("#error_message").removeClass("text-danger");
+        $("#error_message").css("color", "green");
+    }
+});
 
+$(document).ready(function(){
     $("#login").click(function(event) {
         var username = $("#username");
         var password = $("#password");
@@ -52,26 +63,12 @@ $(document).ready(function() {
             username.css("borderColor", "green");
         }
     });
+})
 
+$(document).ready(function(event){
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has("registration") && urlParams.get("registration") === 'failed') {
-        $("#register_page").css("display", "flex");
-        $("#error_message").text("Email or username already taken");
-        inputs.forEach(function(input) {
-            input.val(input.val());
-        });
-    }
-
-    if (urlParams.has("registration") && urlParams.get("registration") === 'success') {
-        $("#register_page").css("display", "flex");
-        $("#error_message").text("Registration successful");
-        $("#error_message").removeClass("text-danger");
-        $("#error_message").css("color", "green");
-    }
-
     if (urlParams.has("status") && urlParams.get("status") === 'failed') {
-        var user = urlParams.get("username");
-        $("#username").val(user);
         $("#error_login").text("Wrong username or password");
+        event.preventDefault();
     }
 });
