@@ -21,6 +21,6 @@
         echo'<div id="error" style="width: 100%; text-align: center; color:red;">0 likes</div>';
     }
     while ($names = $res->fetch_assoc()) {
-        echo '<div class="fw-semibold fs-4">'.$names["username"].'<br></div>';
+        echo '<div class="fw-semibold fs-5">'.$names["username"].'<br></div>';
     }
 ?>
