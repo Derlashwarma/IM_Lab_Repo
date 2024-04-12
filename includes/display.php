@@ -91,14 +91,10 @@
         echo
         ('
             <script>
-
-                $("#like_show'.$row['post_id'].'").hover(function(){
-                    var div = $("#likes'.$row['post_id'].'");
-                    div.css("display","block");
-                },function(){
-                    var div = $("#likes'.$row['post_id'].'");
-                    div.css("display","none");
-                })
+                $("#like_show'.$row['post_id'].'").click(function(){
+                    var div = $("#likes'.$row['post_id'].'"); 
+                    div.css("display", div.css("display")==="none"?"block":"none");
+                });
             </script>
         ');
         //scripts for like and delete
