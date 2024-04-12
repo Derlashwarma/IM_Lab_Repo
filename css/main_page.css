@@ -112,3 +112,10 @@ body{
 input[type="file"] {
     color: transparent;
 }
+
+.likes_container{
+    display: none;
+}
+.utility-buttons, .element-container{
+    width: fit-content;
+}
