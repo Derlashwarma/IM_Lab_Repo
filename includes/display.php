@@ -17,7 +17,22 @@
         ";
     $username = $_GET["username"];
     $acctid = $_GET["acctid"];
+        ";
+    $username = $_GET["username"];
+    $acctid = $_GET["acctid"];
 
+    try{
+        $result = mysqli_query($conn,$query);
+    }
+    catch(Exception $e){
+        // echo'<div style="width: 100%; text-align: center; color:red;">cannot load, an error has occured</div>';
+        echo($e);
+        return;
+    }
+    if(mysqli_num_rows($result) == 0){
+        echo'<div id="error" style="width: 100%; text-align: center; color:red;">There are no uploads </div>';
+        return;
+    }
     try{
         $result = mysqli_query($conn,$query);
     }
@@ -122,5 +137,6 @@
                     })
                     </script>
                 ');
+    }
     }
 ?>
