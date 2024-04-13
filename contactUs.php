@@ -1,3 +1,18 @@
+<?php
+    require 'connect.php';
+    session_start();
+    $username = $_GET["username"];
+    
+    $checkIfAdminQuery = "SELECT * FROM tbluseraccount WHERE username = ? AND is_admin = 1";
+    $checkIfAdmin = $conn->prepare($checkIfAdminQuery);
+    $checkIfAdmin->bind_param("s",$username);
+    $checkIfAdmin->execute();
+    $result = $checkIfAdmin->get_result()->fetch_assoc();
+    $isAdmin = null;
+    if($result){
+        $isAdmin = $result["is_admin"];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

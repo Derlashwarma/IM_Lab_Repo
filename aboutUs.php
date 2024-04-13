@@ -1,6 +1,17 @@
-<?php 
-session_start();
-$username = $_GET["username"];
+<?php
+    require 'connect.php';
+    session_start();
+    $username = $_GET["username"];
+    
+    $checkIfAdminQuery = "SELECT * FROM tbluseraccount WHERE username = ? AND is_admin = 1";
+    $checkIfAdmin = $conn->prepare($checkIfAdminQuery);
+    $checkIfAdmin->bind_param("s",$username);
+    $checkIfAdmin->execute();
+    $result = $checkIfAdmin->get_result()->fetch_assoc();
+    $isAdmin = null;
+    if($result){
+        $isAdmin = $result["is_admin"];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,18 +48,23 @@ $username = $_GET["username"];
         </div>
     <div class="main-page-container container">
         <div class="news-feed-container row">
-            <div class="navigation bg-body shadow mb-3 rounded-4">
-                <div class="nav-buttons">
-                    <ul class="list-inline pt-3 page-list">
+        <div class="navigation bg-body shadow mb-3 rounded-4">
+                <div class="nav-buttons h-100">
+                    <ul class="list-inline pt-3 page-list h-100">
                         <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
-                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
-                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
-                        <li class="list-inline-item"><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
+                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0 text-dark" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
+                        <li class="list-inline-item h-80 rounded-4 shadow"><a class="text-dark link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
+                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
+                        <?php 
+                            if ($isAdmin) {
+                                echo "<li class='list-inline-item'><a class='link-underline link-underline-opacity-0' href='user.php?username=$username&acctid={$_GET['acctid']}'>Users/a></li>";
+                            }
+                        ?>
                     </ul>
                 </div>
             </div>
 
-        <div class = "container bg-body rounded-4 shadow p-4 mb-3" >
+            <div class = "container bg-body rounded-4 shadow p-4 mb-3" >
             <h1>
                 About Us
             </h1>

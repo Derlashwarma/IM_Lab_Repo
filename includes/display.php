@@ -17,7 +17,6 @@
         ";
     $username = $_GET["username"];
     $acctid = $_GET["acctid"];
-        ";
     $username = $_GET["username"];
     $acctid = $_GET["acctid"];
 
@@ -54,7 +53,8 @@
                     WHERE post_image LIKE '../%';";
     $run_remove = mysqli_query($conn,$remove_string);
 
-    while($row = mysqli_fetch_assoc($result)){
+    while($row = mysqli_fetch_assoc($result))
+    {
         echo
         '
         <div class="delete-post bg-body rounded-4 mb-3 shadow p-3 " id="post-'.$row['post_id'].'">
@@ -103,6 +103,8 @@
             Likes the post <br>';
             include "show_likes.php";
         echo'</div>';
+
+        //Script for showing likes
         echo
         ('
             <script>
@@ -124,19 +126,21 @@
             })
             </script>
         ');
-        echo
-                ('
-                    <script>
-                    document.getElementById("delete-post-'.$row['post_id'].'").addEventListener("click", function(){
-                        if(document.getElementById("post-'.$row['post_id'].'").style.display=="block"){
-                            document.getElementById("post-'.$row['post_id'].'").style.display="none";
-                        }
-                        else{
-                            document.getElementById("post-'.$row['post_id'].'").style.display="block";
-                        }
-                    })
-                    </script>
-                ');
-    }
+        //script for opening delete post
+        if($row['acctid'] == $acctid || $row['is_admin'] == 1){
+            echo
+        ('
+            <script>
+            document.getElementById("delete-post-'.$row['post_id'].'").addEventListener("click", function(){
+                if(document.getElementById("post-'.$row['post_id'].'").style.display=="block"){
+                    document.getElementById("post-'.$row['post_id'].'").style.display="none";
+                }
+                else{
+                    document.getElementById("post-'.$row['post_id'].'").style.display="block";
+                }
+            })
+            </script>
+        ');
+        }
     }
 ?>
