@@ -58,7 +58,7 @@
             <div class="navigation bg-body shadow mb-3 rounded-4">
                 <div class="nav-buttons h-100">
                     <ul class="list-inline pt-3 page-list h-100">
-                        <li class="list-inline-item h-80 rounded-4 shadow shadow-lg"><a class="link-underline link-underline-opacity-0 text-dark" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
+                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0 text-dark" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
