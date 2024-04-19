@@ -41,7 +41,7 @@
                 </div>
                 <div class="utility-buttons">
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a href="../includes/logout.php" class="link-underline link-underline-opacity-0" id="logout-btn">logout</a></li>
+                        <li class="list-inline-item"><a href="logout.php" class="link-underline link-underline-opacity-0" id="logout-btn">logout</a></li>
                     </ul>
                 </div>
             </div>
