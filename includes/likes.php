@@ -26,8 +26,8 @@
             $remove_query->bind_param('ii',$post_id,$acctid);
             $remove_query->execute();
             $decrement_query = "UPDATE tblpost 
-                                    SET post_likes = post_likes - 1
-                                    WHERE post_id = ?";
+                                SET post_likes = post_likes - 1
+                                WHERE post_id = ?";
             $run_decrement = $conn->prepare($decrement_query);
             $run_decrement->bind_param('i',$post_id);
             $run_decrement->execute();

@@ -26,7 +26,7 @@
 </head>
 <body>
     <div class="main-container container ">
-        <div class="login-container">
+        <div class="login-container" id="login-cotainer">
             <div class="input shadow-lg p-3 mb-5 bg-body rounded">    
                 <form method="post" id="login_form">
                     <div class="mt-2">
@@ -58,7 +58,7 @@
         </div>
         <div class="register-container shadow p-3 rounded align-self-center" id="register_page">
             <div class="registration-form mt-5">
-                <form method="POST" onsubmit="return validateRegistration(event)">
+                <form method="POST" onsubmit="return validateForm(event)">
                     <div class="register-input-container input shadow p-3 mb-5 bg-body rounded">
                         <div class=" mb-3 d-grid gap-2">
                             <div class="close-btn-container"><button id="close_regis" class="btn-close"></button></div>

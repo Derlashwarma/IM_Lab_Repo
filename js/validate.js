@@ -11,23 +11,37 @@ $(document).ready(function() {
 
     $("#submit_registration").click(function(event) {
         var valid = true;
+        var inputs = [
+            $("#regis_pass"),
+            $("#regis_pass_conf"),
+            $("#regis_first_name"),
+            $("#regis_last_name"),
+            $(".form-select[name='regis_gender']"),
+            $("#regis_email"),
+            $("#regis_user_name")
+        ];
 
         inputs.forEach(function(input) {
-            if (input.val() === "") {
+            if (input.val() == "") {
                 input.css("borderColor", "red");
                 valid = false;
             } else {
                 input.css("borderColor", "");
             }
         });
+        
 
         var password = inputs[0].val();
         var password2 = inputs[1].val();
         if (password !== password2) {
             $("#regis_pass, #regis_pass_conf").css("borderColor", "red");
             $("#error_message").text("Password does not match");
+        }
+        if(!valid){
+            $("#error_message").text("Please input following fields");
             event.preventDefault();
         }
+
     });
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("registration") && urlParams.get("registration") === 'failed') {
