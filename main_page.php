@@ -90,7 +90,8 @@
         var acctid = "<?php echo htmlspecialchars(urlencode($acctid)); ?>";
         var form = document.getElementById("uploadForm");
         form.action = "includes/upload.php?username=" + username + "&acctid=" + acctid + "&is_auction=0";
-        });
+        }
+    );
     </script>
 <script
   src="https://code.jquery.com/jquery-3.7.1.js"

@@ -70,11 +70,26 @@
         </div>
         ';
         echo'<div class="card-div mb-3 shadow bg-body p-3 rounded-4">';
-        if($isAdmin || $acctid == $row['acctid']){
+        if($isAdmin == 1 || $acctid == $row['acctid']){
             echo '
             <div class="delete-btn-container">
                 <button type="button" id="delete-post-'.$row['post_id'].'" class="position-absolute btn-close" aria-label="Close"></button>
-            </div>';
+            </div>
+            ';
+            echo
+            ('
+                <script>
+                document.getElementById("delete-post-'.$row['post_id'].'").addEventListener("click", function(event){
+                    event.preventDefault();
+                    if(document.getElementById("post-'.$row['post_id'].'").style.display=="block"){
+                        document.getElementById("post-'.$row['post_id'].'").style.display="none";
+                    }
+                    else{
+                        document.getElementById("post-'.$row['post_id'].'").style.display="block";
+                    }
+                })
+                </script>
+            ');
         }
         echo'    <div class="row name-div">
                 <p class="h5">'.$row["username"].'</p>
@@ -119,28 +134,14 @@
         ('
             <script>
             $(document).ready(function(){
-                        
                 document.getElementById("no-'.$row['post_id'].'").addEventListener("click", function(){
                     document.getElementById("post-'.$row['post_id'].'").style.display="none";
                 })  
             })
             </script>
         ');
-        //script for opening delete post
-        if($row['acctid'] == $acctid || $row['is_admin'] == 1){
-            echo
-        ('
-            <script>
-            document.getElementById("delete-post-'.$row['post_id'].'").addEventListener("click", function(){
-                if(document.getElementById("post-'.$row['post_id'].'").style.display=="block"){
-                    document.getElementById("post-'.$row['post_id'].'").style.display="none";
-                }
-                else{
-                    document.getElementById("post-'.$row['post_id'].'").style.display="block";
-                }
-            })
-            </script>
-        ');
+        if($row['acctid'] == $acctid || $row['is_admin']){
+            
         }
     }
 ?>

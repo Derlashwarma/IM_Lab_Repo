@@ -13,6 +13,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST["regis_username"];
         $password = $_POST["regis_pass"];
 
+        if(empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($password)) {
+            header("Location: index.php?registration=failed");
+            return;
+        }
+
         $check_email = "SELECT * FROM tbluseraccount WHERE username=? OR emailadd=?" ;
         $stmt_check_email = $conn->prepare($check_email);
         $stmt_check_email->bind_param("ss",$username,$email);

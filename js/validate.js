@@ -46,7 +46,7 @@ $(document).ready(function() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.has("registration") && urlParams.get("registration") === 'failed') {
         $("#register_page").css("display", "flex");
-        $("#error_message").text("Email or username already taken");
+        $("#error_message").text("Registration failed");
         inputs.forEach(function(input) {
             input.val(input.val());
         });
