@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    $check_username = "SELECT * FROM tbluseraccount WHERE username=?";
+    $check_username = "SELECT * FROM tbluseraccount WHERE username=? && is_active = 1";
     $stmt_check_username = $conn->prepare($check_username);
     $stmt_check_username->bind_param("s", $username);
     $stmt_check_username->execute();
