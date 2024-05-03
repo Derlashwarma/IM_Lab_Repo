@@ -76,7 +76,7 @@
                         <th>Account ID</th>
                         <th>Username</th>
                         <th>Active Status</th>
-                        <th>Operations</th>
+                        <th>Operation</th>
                     </tr>
                     <?php
                         include 'includes/display_users.php';
@@ -85,15 +85,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        var username = "<?php echo htmlspecialchars(urlencode($username)); ?>";
-        var acctid = "<?php echo htmlspecialchars(urlencode($acctid)); ?>";
-        var form = document.getElementById("uploadForm");
-        form.action = "includes/upload.php?username=" + username + "&acctid=" + acctid + "&is_auction=0";
-        }
-    );
-    </script>
 <script
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
