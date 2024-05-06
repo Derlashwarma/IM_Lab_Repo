@@ -114,7 +114,7 @@
         </div>
         ';
         echo'</div>';
-        echo '<div id="likes'.$row['post_id'].'" class="container bg-body rounded-2 mb-3 shadow-lg p-2 likes_container">
+        echo '<div id="likes'.$row['post_id'].'" class="container bg-body rounded-4 mb-3 shadow-lg p-2 likes_container">
             Likes the post <br>';
             include "show_likes.php";
         echo'</div>';

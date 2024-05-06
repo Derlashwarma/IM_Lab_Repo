@@ -98,12 +98,13 @@
                 </table>
             </div>
             <div class="mt-4 container bg-body rounded-4 p-3 shadow">
-                <label class="h5">Post with Highest Bids</label>
+                <label class="h5">Highest Bids in Auctions</label>
                 <table class="table">
                     <tr>
                         <th>Rank</th>
                         <th>Auction Post ID</th>
                         <th>Bid Ammount</th>
+                        <th>Contact</th>
                     </tr>
                         <?php include('includes/highest_bids.php'); ?>
                 </table>

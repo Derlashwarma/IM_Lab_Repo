@@ -9,7 +9,9 @@
     ON tua.acctid = tub.acctid
     INNER JOIN tblbid AS tb
     ON tb.userbidid = tub.userbidid
+    WHERE tua.is_active = 1
     ORDER BY tb.bidamount DESC
+    LIMIT 10
     ";
     
     $run_query = $conn->prepare($select_query);
