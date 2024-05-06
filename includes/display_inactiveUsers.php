@@ -22,7 +22,7 @@
             <td>'.$row['acctid'].'</td>
             <td>'.$row['username'].'</td>
             <td class="'.$color.'">'.$active_status.'</td>
-            <td><a href="includes/delete_user.php?to_delete='.$row['acctid'].'&username='.$username.'&acctid='.$acctid.'" class="btn btn-success">Activate User</a></td>
+            <td><a href="includes/activate_user.php?to_delete='.$row['acctid'].'&username='.$username.'&acctid='.$acctid.'" class="btn btn-success">Activate User</a></td>
         </tr>';
     }
 
