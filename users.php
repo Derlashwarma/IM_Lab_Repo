@@ -65,23 +65,45 @@
                         <?php 
                             if ($isAdmin) {
                                 echo "<li class='list-inline-item'><a class='link-underline link-underline-opacity-0 text-dark' href='users.php?username=$username&acctid={$_GET['acctid']}'>Users</a></li>";
+                                echo 
+                                "<li class='list-inline-item'>
+                                <a class='link-underline link-underline-opacity-0' href='dashboard.php?username=$username&acctid={$_GET['acctid']}'>Dashboard</a>
+                                </li>";
                             }
                         ?>
                     </ul>
                 </div>
             </div>
             <div class="container bg-body rounded-4 shadow-lg table">
-                <table class="table">
-                    <tr>
-                        <th>Account ID</th>
-                        <th>Username</th>
-                        <th>Active Status</th>
-                        <th>Operation</th>
-                    </tr>
-                    <?php
-                        include 'includes/display_users.php';
-                    ?>
-                </table>
+                <h3 class="pt-3">Active Users</h3>  
+                    <table class="table">
+                        <tr>
+                            <th>Account ID</th>
+                            <th>Username</th>
+                            <th>Active Status</th>
+                            <th>Operation</th>
+                        </tr>
+                                  
+                    <div class="active-container">
+                        <?php
+                            include 'includes/display_users.php';
+                        ?>
+                    </div>
+                    </table>
+                <h3>Not Active Users</h3>
+                <div>
+                    <table class="table">
+                        <tr>
+                            <th>Account ID</th>
+                            <th>Username</th>
+                            <th>Active Status</th>
+                            <th>Operation</th>
+                        </tr>   
+                        <?php
+                            include 'includes/display_inactiveUsers.php';
+                        ?>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

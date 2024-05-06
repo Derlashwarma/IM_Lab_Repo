@@ -59,6 +59,10 @@
                         <?php 
                             if ($isAdmin) {
                                 echo "<li class='list-inline-item'><a class='link-underline link-underline-opacity-0' href='users.php?username=$username&acctid={$_GET['acctid']}'>Users</a></li>";
+                                echo 
+                                "<li class='list-inline-item'>
+                                <a class='link-underline link-underline-opacity-0' href='dashboard.php?username=$username&acctid={$_GET['acctid']}'>Dashboard</a>
+                                </li>";
                             }
                         ?>
                     </ul>

@@ -2,6 +2,7 @@
     $is_auction = $_GET['is_auction'];
     $query = "
             SELECT 
+            tba.auctionpostid,
             acc.acctid, acc.username, acc.is_admin, 
             a.author_id, a.acctid,
             p.post_id, p.author_id, p.post_image, p.post_information,
@@ -11,8 +12,11 @@
             ON acc.acctid = a.acctid
             RIGHT JOIN tblpost AS p
             ON a.author_id = p.author_id
+            INNER JOIN tblauctionpost AS tba
+            ON tba.postid = p.post_id
             WHERE p.is_active = 1
             AND p.is_auction = $is_auction
+            AND tba.enddate > CURDATE()
             ORDER BY p.post_id DESC;
         ";
     $username = $_GET["username"];
@@ -100,38 +104,11 @@
             <div class=" image-div">
                 <img src="'.($row['post_image']).'" alt="Car Image">
             </div>';
-        echo '
-        <div>
-            <div class="like-count p-2">
-                '.$row["post_likes"].'
-                <a id="like_show'.$row['post_id'].'" class="link-offset-2 link-underline link-underline-opacity-0">Likes</a>
-            </div>
-                <a href="includes/likes.php?post_id='.$row['post_id'].'&username='.$username.'&acctid='.$acctid.'&is_auction='.$is_auction.'" class="like-btn pt-2 pb-2 rounded btn btn-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                    </svg>
-                </a>
-        </div>
-        ';
-        echo'</div>';
-        echo '<div id="likes'.$row['post_id'].'" class="container bg-body rounded-2 mb-3 shadow-lg p-2 likes_container">
-            Likes the post <br>';
-            include "show_likes.php";
-        echo'</div>';
-
-        //Script for showing likes
-        echo
-        ('
-            <script>
-                $("#like_show'.$row['post_id'].'").click(function(){
-                    var div = $("#likes'.$row['post_id'].'"); 
-                    div.css("display", div.css("display")==="none"?"block":"none");
-                });
-            </script>
-        ');
+        //bid location
+        include 'auction_module.php';
         //scripts for like and delete
         echo
-        ('
+        ('</div>
             <script>
             $(document).ready(function(){
                 document.getElementById("no-'.$row['post_id'].'").addEventListener("click", function(){

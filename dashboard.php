@@ -58,7 +58,7 @@
             <div class="navigation bg-body shadow mb-3 rounded-4">
                 <div class="nav-buttons h-100">
                     <ul class="list-inline pt-3 page-list h-100">
-                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0 text-dark" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
+                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
@@ -67,39 +67,48 @@
                                 echo "<li class='list-inline-item'><a class='link-underline link-underline-opacity-0' href='users.php?username=$username&acctid={$_GET['acctid']}'>Users</a></li>";
                                 echo 
                                 "<li class='list-inline-item'>
-                                <a class='link-underline link-underline-opacity-0' href='dashboard.php?username=$username&acctid={$_GET['acctid']}'>Dashboard</a>
+                                <a class='link-underline link-underline-opacity-0 text-dark' href='dashboard.php?username=$username&acctid={$_GET['acctid']}'>Dashboard</a>
                                 </li>";
                             }
                         ?>
                     </ul>
                 </div>
             </div>
-            <div class="upload-container mb-3 shadow bg-body  p-3 rounded-4">
-                <?php
-                    if(isset($_GET['username']) && isset($_GET['acctid'])) {
-                        include 'includes/upload_module.php'; 
-                    }
-                ?>
+            <div class="container bg-body rounded-4 p-3 shadow">
+                <label class="h5">Top 10 Highest Bids</label>
+                <table class="table">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Account ID</th>
+                        <th>Bid Amount</th>
+                    </tr>
+                        <?php include('includes/top_10_highest_bids'); ?>
+                </table>
             </div>
-            <?php
-            if(isset($_GET['username']) && isset($_GET['acctid'])) {
-                include 'includes/display.php';
-            }
-            ?>
+            <div class="mt-4 container bg-body rounded-4 p-3 shadow">
+                <label class="h5">Post with Most Bids</label>
+                <table class="table">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Auction Post ID</th>
+                        <th>Bid Count</th>
+                    </tr>
+                        <?php include('includes/most_bids.php'); ?>
+                </table>
+            </div>
+            <div class="mt-4 container bg-body rounded-4 p-3 shadow">
+                <label class="h5">Post with Highest Bids</label>
+                <table class="table">
+                    <tr>
+                        <th>Rank</th>
+                        <th>Auction Post ID</th>
+                        <th>Bid Ammount</th>
+                    </tr>
+                        <?php include('includes/highest_bids.php'); ?>
+                </table>
+            </div>
         </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        var username = "<?php echo htmlspecialchars(urlencode($username)); ?>";
-        var acctid = "<?php echo htmlspecialchars(urlencode($acctid)); ?>";
-        var form = document.getElementById("uploadForm");
-        form.action = "includes/upload.php?username=" + username + "&acctid=" + acctid + "&is_auction=0";
-        }
-    );
-    </script>
-<script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"></script>
 </body>
 </html>
