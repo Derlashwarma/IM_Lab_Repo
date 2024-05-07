@@ -1,18 +1,18 @@
 <?php 
     $select_query = 
-    "SELECT 
-        tua.username as username, tua.acctid,
-        tub.acctid AS account, tub.userbidid,
-        tb.bidamount AS amount, tb.userbidid
-    FROM tbluseraccount AS tua
-    INNER JOIN tbluserbid AS tub
-    ON tua.acctid = tub.acctid
-    INNER JOIN tblbid AS tb
-    ON tb.userbidid = tub.userbidid
-    WHERE tua.is_active = 1
-    ORDER BY tb.bidamount DESC
-    LIMIT 10
-    ";
+        "SELECT 
+            tua.username as username, tua.acctid,
+            tub.acctid AS account, tub.userbidid,
+            tb.bidamount AS amount, tb.userbidid
+        FROM tbluseraccount AS tua
+        INNER JOIN tbluserbid AS tub
+        ON tua.acctid = tub.acctid
+        INNER JOIN tblbid AS tb
+        ON tb.userbidid = tub.userbidid
+        WHERE tua.is_active = 1
+        ORDER BY tb.bidamount DESC
+        LIMIT 10
+        ";
     
     $run_query = $conn->prepare($select_query);
     $run_query->execute();
