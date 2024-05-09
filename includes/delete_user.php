@@ -14,6 +14,6 @@ $delete_query = $conn->prepare($delete_query);
 $delete_query->bind_param("i", $user_id_to_delete);
 
 if($delete_query->execute()) {
-    header("Location: ../users.php?username=$username&acctid=$acctid");
+    header("Location: ../admin.php?username=$username&acctid=$acctid");
 }
 ?>

@@ -22,6 +22,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" href="css/main_page.css">
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
         <title>About Us</title>
     </head>
@@ -56,14 +57,7 @@
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
                         <?php 
                             if ($isAdmin) {
-                                echo 
-                                "<li class='list-inline-item'>
-                                <a class='link-underline link-underline-opacity-0' href='users.php?username=$username&acctid={$_GET['acctid']}'>Users</a>
-                                </li>";
-                                echo 
-                                "<li class='list-inline-item'>
-                                <a class='link-underline link-underline-opacity-0' href='dashboard.php?username=$username&acctid={$_GET['acctid']}'>Dashboard</a>
-                                </li>";
+                                echo "<li class='list-inline-item'><a class='link-underline link-underline-opacity-0' href='admin.php?username=$username&acctid={$_GET['acctid']}'>Admin</a></li>";
                             }
                         ?>
                     </ul>
