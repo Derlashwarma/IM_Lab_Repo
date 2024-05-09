@@ -114,8 +114,8 @@
         </div>
         ';
         echo'</div>';
-        echo '<div id="likes'.$row['post_id'].'" class="container bg-body rounded-4 mb-3 shadow-lg p-2 likes_container">
-            Likes the post <br>';
+        echo '<div id="likes'.$row['post_id'].'" class="container bg-body rounded-4 mb-3 shadow-lg p-3 likes_container">
+            <p style="font-weight: bold">People who liked</p>';
             include "show_likes.php";
         echo'</div>';
 
