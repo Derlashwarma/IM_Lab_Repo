@@ -25,6 +25,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main_page.css">
@@ -39,11 +40,11 @@
     <div class="nav shadow floating-nav rounded-4 navbar navbar-expand-lg navbar-light bg-light mb-3">
         <div class="container element-container">
             <div class="name-container p-2 text-center">
-                <h1>
+                <h3>
                     <?php
                         echo($username);
                     ?>
-                </h1>
+                </h3>
             </div>
             
         </div>
@@ -61,10 +62,10 @@
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="main_page.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=0">Main Page</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="auction.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>&is_auction=1">Auction</a></li>
                         <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="aboutUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">About Us</a></li>
-                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0  text-dark" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
+                        <li class="list-inline-item "><a class="link-underline link-underline-opacity-0" href="contactUs.php?username=<?php echo($username) ?>&acctid=<?php echo($_GET['acctid']); ?>">Contact Us</a></li>
                         <?php 
                             if ($isAdmin) {
-                                echo "<li class='list-inline-item'><a class='link-underline link-underline-opacity-0' href='admin.php?username=$username&acctid={$_GET['acctid']}'>Admin</a></li>";
+                                echo "<li class='list-inline-item'><a class='link-underline link-underline-opacity-0  text-dark' href='admin.php?username=$username&acctid={$_GET['acctid']}'>Admin</a></li>";
                             }
                         ?>
                     </ul>
@@ -74,8 +75,7 @@
                 <div class="nav-buttons h-100">
                     <ul class="list-inline pt-3 page-list h-100">
                         <li class="list-inline-item users"><a href="#users" class="link-underline link-underline-opacity-0 text-dark user_class">Users</a></li>
-                        <li class="list-inline-item dashboard"><a href="#dashboard" class="link-underline link-underline-opacity-0 dashboard_class" >Dashboard</a></li>  
-                        <li class="list-inline-item statistics"><a href="#statistis" class="link-underline link-underline-opacity-0 statistics_class" >Statistics</a></li>  
+                        <li class="list-inline-item dashboard"><a href="#dashboard" class="link-underline link-underline-opacity-0 dashboard_class" >Dashboard</a></li>
                     </ul>
                 </div>
             </div>
@@ -85,15 +85,13 @@
             <div class="dashboard_container">
                 <?php include'includes/dashboard.php';?>
             </div>
-            <div class="statistics_container">
-                This is the statistics
-            </div>
         </div>
     </div>
 <script
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous">
+</script>
 <script src="js/admin.js"></script>
 </body>
 </html>

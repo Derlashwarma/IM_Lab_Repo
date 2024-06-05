@@ -43,11 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $store_stment->bind_param("isss", $author_id, $address, $post_info, $is_auction);
 
         if ($store_stment->execute()) {
-            $post_id = $conn->insert_id;
-            $storeToTblAuctionPostQuery = "INSERT INTO tblauctionpost(postid) VALUES (?)";
-            $storeAuctionPost = $conn->prepare($storeToTblAuctionPostQuery);
-            $storeAuctionPost->bind_param("i",$post_id);
-            $storeAuctionPost->execute();
+            if($is_auction == 1) {
+                $post_id = $conn->insert_id;
+                $storeToTblAuctionPostQuery = "INSERT INTO tblauctionpost(postid) VALUES (?)";
+                $storeAuctionPost = $conn->prepare($storeToTblAuctionPostQuery);
+                $storeAuctionPost->bind_param("i",$post_id);
+                $storeAuctionPost->execute();
+            }
 
             if($is_auction == 1){
                 header('Location: ../auction.php?username='.urlencode($username).'&acctid='.urlencode($acctid).'&is_auction=1');

@@ -15,11 +15,12 @@
     catch(Exception $e) {
      echo 'Something went wrong';
     }
+    $counter=1;
     while($row = mysqli_fetch_assoc($result)) {
         $color = ($row["is_active"] == 1)?"text-success":"text-danger";
         $active_status = $row['is_active']==1?"Active":"Not Active";
         echo'<tr>
-            <td>'.$row['acctid'].'</td>
+            <td>'.$counter++.'</td>
             <td>'.$row['username'].'</td>
             <td class="'.$color.'">'.$active_status.'</td>
             <td><a href="includes/delete_user.php?to_delete='.$row['acctid'].'&username='.$username.'&acctid='.$acctid.'" class="btn btn-danger">Delete User</a></td>

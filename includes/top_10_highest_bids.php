@@ -2,7 +2,8 @@
     $select_query = 
         "SELECT 
             tua.username as username, tua.acctid,
-            tub.acctid AS account, tub.userbidid,
+            tub.acctid, 
+            tub.userbidid AS account,
             tb.bidamount AS amount, tb.userbidid
         FROM tbluseraccount AS tua
         INNER JOIN tbluserbid AS tub
