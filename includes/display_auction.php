@@ -6,7 +6,7 @@
             acc.acctid, acc.username, acc.is_admin, 
             a.author_id, a.acctid,
             p.post_id, p.author_id, p.post_image, p.post_information,
-            p.is_auction, p.post_likes, p.is_active,tba.highestbid
+            p.is_auction, p.post_likes, p.is_active
             FROM tbluseraccount AS acc
             RIGHT JOIN tblauthor AS a
             ON acc.acctid = a.acctid
@@ -95,8 +95,7 @@
                 </script>
             ');
         }
-        echo'  
-            <div class="row name-div">
+        echo'    <div class="row name-div">
                 <p class="h5">'.$row["username"].'</p>
                 </div>
             <div class="row information-div p-3">
@@ -104,15 +103,12 @@
             </div>
             <div class=" image-div">
                 <img src="'.($row['post_image']).'" alt="Car Image">
-            </div>
-            ';
-        include 'highest_bid.php';
+            </div>';
         //bid location
         include 'auction_module.php';
         //scripts for like and delete
         echo
-        ('
-        </div>
+        ('</div>
             <script>
             $(document).ready(function(){
                 document.getElementById("no-'.$row['post_id'].'").addEventListener("click", function(){
