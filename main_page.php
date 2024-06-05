@@ -39,11 +39,11 @@
     <div class="nav shadow floating-nav rounded-4 navbar navbar-expand-lg navbar-light bg-light mb-3">
         <div class="container element-container">
             <div class="name-container p-2 text-center">
-                <h3>
+                <h1>
                     <?php
                         echo($username);
                     ?>
-                </h3>
+                </h1>
             </div>
             
         </div>
